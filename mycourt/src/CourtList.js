@@ -1,5 +1,5 @@
 import React, {Component, Fragment}from 'react';
-import { render } from 'react-dom';
+import ListItem from './ListItem'
 
 
 class CourtList extends Component {
@@ -20,7 +20,17 @@ class CourtList extends Component {
         <ul>
           {
             this.state.list.map((item,index)=>{
-                return <li key={index} onClick ={this.handleDeletItem.bind(this,index)}>{item}</li>
+                return (
+                  <Fragment>
+                    <ListItem 
+                    content = {item}
+                    index = {index}
+                    deleteItme = {this.handleDeleteItem.bind(this)}
+                    />
+                  </Fragment>
+                  
+                )
+                //<li key={index} onClick ={this.handleDeleteItem.bind(this,index)}>{item}</li>
               })
           }
         </ul>
@@ -41,7 +51,7 @@ class CourtList extends Component {
   }
 
 
-  handleDeletItem(index){
+  handleDeleteItem(index){
     const list = [...this.state.list];
     list.splice(index,1);
     this.setState({
