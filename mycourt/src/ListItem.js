@@ -10,7 +10,6 @@ class ListItem extends Component {
     }
         
     handleClick(){
-        
         this.props.deleteItme(this.props.index);
     }
 

@@ -1,6 +1,6 @@
 import React, {Component, Fragment}from 'react';
-import ListItem from './ListItem'
-
+import ListItem from './ListItem';
+import PropTypes from 'prop-types';
 
 class CourtList extends Component {
   constructor(props){
@@ -22,7 +22,8 @@ class CourtList extends Component {
             this.state.list.map((item,index)=>{
                 return (
                   <Fragment>
-                    <ListItem 
+                    <ListItem
+                    key = {index} 
                     content = {item}
                     index = {index}
                     deleteItme = {this.handleDeleteItem.bind(this)}
@@ -61,7 +62,14 @@ class CourtList extends Component {
   }
 }
 
+ListItem.PropTypes = {
+  content:PropTypes.string.isRequired,
+  deleteItme:PropTypes.func,
+  index:PropTypes.number
+}
 
-
+ListItem.defaultProps = {
+  
+}
 
 export default CourtList;
